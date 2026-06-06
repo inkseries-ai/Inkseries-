@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 10% 96%;
+    --foreground: 30 10% 8%;
+    --card: 30 10% 100%;
+    --card-foreground: 30 10% 8%;
+    --popover: 30 10% 100%;
+    --popover-foreground: 30 10% 8%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 30 10% 8%;
+    --secondary: 30 8% 90%;
+    --secondary-foreground: 30 10% 15%;
+    --muted: 30 8% 92%;
+    --muted-foreground: 30 8% 45%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 30 10% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 38 92% 50%;
+    --radius: 0.5rem;
+    --chart-1: 38 92% 55%;
+    --chart-2: 30 80% 45%;
+    --chart-3: 20 70% 40%;
+    --chart-4: 10 60% 35%;
+    --chart-5: 0 50% 30%;
+  }
+
+  .dark {
+    --background: 20 15% 6%;
+    --foreground: 30 15% 95%;
+    --card: 20 12% 10%;
+    --card-foreground: 30 15% 95%;
+    --popover: 20 12% 10%;
+    --popover-foreground: 30 15% 95%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 20 15% 6%;
+    --secondary: 20 10% 15%;
+    --secondary-foreground: 30 15% 90%;
+    --muted: 20 10% 15%;
+    --muted-foreground: 30 10% 55%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 20 15% 6%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 10% 20%;
+    --input: 30 10% 20%;
+    --ring: 38 92% 50%;
+    --chart-1: 38 92% 55%;
+    --chart-2: 30 80% 50%;
+    --chart-3: 20 70% 45%;
+    --chart-4: 10 60% 40%;
+    --chart-5: 350 50% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bebas Neue", "Impact", sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-amber-400 to-orange-500 bg-clip-text text-transparent;
+  }
+  
+  .glow {
+    box-shadow: 0 0 40px -10px hsl(38 92% 50% / 0.5);
+  }
+  
+  .glow-sm {
+    box-shadow: 0 0 20px -5px hsl(38 92% 50% / 0.4);
+  }
+
+  .animate-marquee {
+    display: inline-block;
+    animation: marquee 35s linear infinite;
+  }
+
+  /* Date picker styling for visibility */
+  input[type="date"],
+  input[type="datetime-local"] {
+    color-scheme: light;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(0);
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="datetime-local"]::-webkit-datetime-edit {
+    color: #1e40af;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+  input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper {
+    color: #1e40af;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-text,
+  input[type="datetime-local"]::-webkit-datetime-edit-text {
+    color: #000000;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-month-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-day-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-year-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-minute-field,
+  input[type="datetime-local"]::-webkit-datetime-edit-ampm-field {
+    color: #1e40af;
+  }
+
+  @media (min-width: 768px) {
+    .animate-marquee {
+      animation: marquee 25s linear infinite;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .animate-marquee {
+      animation: marquee 20s linear infinite;
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Rich text reader content styles */
+  .reader-content p {
+    text-indent: 2rem;
+    margin-bottom: 1.5em;
+    text-align: left;
+  }
+
+  .reader-content h2 {
+    font-family: "Bebas Neue", "Impact", sans-serif;
+    font-size: 1.75em;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    text-indent: 0;
+  }
+
+  .reader-content h3 {
+    font-family: "Bebas Neue", "Impact", sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    text-indent: 0;
+  }
+
+  .reader-content blockquote {
+    border-left: 3px solid hsl(var(--primary));
+    padding-left: 1.5em;
+    margin: 1.5em 0;
+    font-style: italic;
+    opacity: 0.9;
+    text-indent: 0;
+  }
+
+  .reader-content ul,
+  .reader-content ol {
+    padding-left: 2em;
+    margin-bottom: 1.5em;
+    text-indent: 0;
+  }
+
+  .reader-content li {
+    margin-bottom: 0.5em;
+  }
+
+  .reader-content hr {
+    border: none;
+    border-top: 1px solid hsl(var(--border));
+    margin: 2.5em auto;
+    width: 40%;
+  }
+
+  .reader-content strong {
+    font-weight: 700;
+  }
+
+  .reader-content em {
+    font-style: italic;
+  }
+}
